@@ -1,0 +1,19 @@
+package: .
+import:
+- package: github.com/gogo/protobuf
+  version: master
+  subpackages:
+  - proto
+- package: github.com/golang/glog
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: github.com/yuzhichang/mesos-go
+  version: master_dev
+  subpackages:
+  - mesosproto
+  - mesosutil
+  - scheduler
+- package: github.com/yuzhichang/cron
+  version: del_entry
+- package: github.com/cloudfoundry-incubator/candiedyaml

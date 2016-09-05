@@ -1,0 +1,92 @@
+hash: 8f3a189a88b8320bcd84c50399824b06ad1b6d75b20d4751fdbfe34f9169ce85
+updated: 2016-09-02T23:42:27.246947944+08:00
+imports:
+- name: github.com/cloudfoundry-incubator/candiedyaml
+  version: 99c3df83b51532e3615f851d8c2dbb638f5313bf
+- name: github.com/coreos/etcd
+  version: e93ee6179c64cac4d8764870b8267f05c1618c40
+  subpackages:
+  - clientv3
+  - clientv3/concurrency
+  - auth/authpb
+  - etcdserver/api/v3rpc/rpctypes
+  - etcdserver/etcdserverpb
+  - mvcc/mvccpb
+  - pkg/tlsutil
+- name: github.com/ghodss/yaml
+  version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
+- name: github.com/gogo/protobuf
+  version: 966a6f4b3274f2692aa2f30df2ea5c7172c832ca
+  subpackages:
+  - proto
+  - gogoproto
+  - protoc-gen-gogo/descriptor
+- name: github.com/golang/glog
+  version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+- name: github.com/golang/protobuf
+  version: 8616e8ee5e20a1704615e6c8d7afcdac06087a67
+  subpackages:
+  - jsonpb
+  - proto
+- name: github.com/gorilla/mux
+  version: 0a192a193177452756c362c20087ddafcf6829c4
+- name: github.com/grpc-ecosystem/grpc-gateway
+  version: f52d055dc48aec25854ed7d31862f78913cf17d1
+  subpackages:
+  - runtime
+  - runtime/internal
+  - utilities
+- name: github.com/mesos/mesos-go
+  version: ""
+  subpackages:
+  - mesosproto
+  - mesosutil
+  - scheduler
+  - auth
+  - auth/callback
+  - auth/sasl
+  - auth/sasl/mech/crammd5
+  - detector
+  - detector/zoo
+  - mesosproto/scheduler
+  - mesosutil/process
+  - messenger
+  - messenger/sessionid
+  - upid
+  - auth/sasl/mech
+- name: github.com/pborman/uuid
+  version: b984ec7fa9ff9e428bd0cf0abf429384dfbe3e37
+- name: github.com/samuel/go-zookeeper
+  version: 8c6a1d79a44d2742da3660540d1fd43f4ddcfc8c
+  subpackages:
+  - zk
+- name: github.com/yuzhichang/cron
+  version: fe2bc9da317ca020e16708705d6c7ca5cd7241b0
+- name: github.com/yuzhichang/mesos-go
+  version: 838b3d7de8a09ea6aff1e701c969d4cdb71707bb
+  subpackages:
+  - mesosproto
+  - mesosutil
+  - scheduler
+- name: golang.org/x/net
+  version: 6acef71eb69611914f7a30939ea9f6e194c78172
+  subpackages:
+  - context
+  - http2
+  - trace
+  - http2/hpack
+  - internal/timeseries
+- name: google.golang.org/grpc
+  version: 231b4cfea0e79843053a33f5fe90bd4d84b23cd3
+  subpackages:
+  - codes
+  - credentials
+  - grpclog
+  - internal
+  - metadata
+  - naming
+  - peer
+  - transport
+- name: gopkg.in/yaml.v2
+  version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
+devImports: []

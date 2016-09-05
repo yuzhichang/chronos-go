@@ -1,0 +1,41 @@
+version: '2'
+services:
+  zookeeper:
+    image: mesoscloud/zookeeper:3.4.8-centos-7
+    network_mode: host
+    env_file:
+      - ./zoo.conf
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: always
+
+  master:
+    image: mesoscloud/mesos-master:0.28.1-centos-7
+    network_mode: host
+    env_file:
+      - ./master.conf
+    volumes:
+      - /var/lib/mesos/master:/var/lib/mesos/master
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/log/mesos:/var/log/mesos
+    depends_on:
+      - zookeeper
+    restart: always
+
+  slave:
+    image: mesoscloud/mesos-slave:0.28.1-centos-7
+    network_mode: host
+    env_file:
+      - ./slave.conf
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/mesos:/var/lib/mesos
+      - /var/log/mesos:/var/log/mesos
+      - /var/tmp/mesos:/var/tmp/mesos
+    depends_on:
+      - zookeeper
+    restart: always
