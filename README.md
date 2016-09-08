@@ -22,9 +22,10 @@ Features and Plans
  - detect mesos master from ZK
  - support local and remote mesos master
  - check active tasks to handle possible libprocess message dropping
- - HA, election at startup
+ - HA, election at startup via etcd
  - HA, election state transition actions (web server redirect w/o, jobMgms start/stop, scheduler start/stop)
  - HA, jobInfo persistence in etcd, jobMgmt load/store jobs
+ - job history (task list) via redis
  - (TODO) kill tasks of a job
  - (TODO) kill a job shall kill tasks of that job
  - (TODO) metrics api: impl and api

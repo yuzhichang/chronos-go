@@ -39,3 +39,8 @@ services:
     depends_on:
       - zookeeper
     restart: always
+
+  redis:
+    image: redis:3.2.3-alpine
+    network_mode: host
+    restart: always

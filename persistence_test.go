@@ -95,6 +95,7 @@ func TestMain(m *testing.M) {
 		},
 	}
 
+	InitRedisConnPool("127.0.0.1:6379", "")
 	os.Exit(m.Run())
 }
 

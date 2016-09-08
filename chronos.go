@@ -155,8 +155,10 @@ ForLoop:
 		select {
 		case taskInfo := <-chronos.taskChan:
 			chronos.taskBacklog = append(chronos.taskBacklog, taskInfo)
+			HistPutTask(taskInfo)
 		case taskInfo := <-chronos.retryCh:
 			chronos.taskBacklog = append(chronos.taskBacklog, taskInfo)
+			HistPutTask(taskInfo)
 		default:
 			break ForLoop
 		}
@@ -224,6 +226,7 @@ func (chronos *Chronos) StatusUpdate(driver sched.SchedulerDriver, status *mesos
 		status.GetState() == mesos.TaskState_TASK_ERROR {
 		chronos.tasksErrored++
 	}
+	HistPutTaskStatus(status)
 }
 
 func (chronos *Chronos) OfferRescinded(_ sched.SchedulerDriver, oid *mesos.OfferID) {

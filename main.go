@@ -24,6 +24,8 @@ var (
 	gAddSample bool
 	gRunSample bool
 	gEtcdUrl string
+	gRedisServer string
+	gRedisPassword string
 
 	//election
 	gLeaderAddr string
@@ -144,6 +146,7 @@ func main() {
 	addSample := flag.Bool("add_sample", false, "add sample jobs before servicing REST API")
 	runSample := flag.Bool("run_sample", false, "run sample jobs instead of servicing REST API")
 	etcdUrl := flag.String("etcd_url", "etcd://127.0.0.1:2379/chronos-go", "etcd cluster endpoints")
+	redisServer := flag.String("redis_server", "127.0.0.1:6379", "redis server ip and port")
 	flag.Parse()
 	gMesosZk = *mesosZk
 	gBindingAddress = *bindingAddress
@@ -151,6 +154,8 @@ func main() {
 	gAddSample = *addSample
 	gRunSample = *runSample
 	gEtcdUrl = *etcdUrl
+	gRedisServer = *redisServer
+	InitRedisConnPool(gRedisServer, "")
 
 	go RunWebServer(uint16(*webPort))
 
