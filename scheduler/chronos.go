@@ -79,24 +79,49 @@ func generateMesosTask(taskInfo TaskInfo, sid *mesos.SlaveID) *mesos.TaskInfo {
 	
 	dockerInfo := &mesos.ContainerInfo_DockerInfo{
 		Image: proto.String(taskInfo.DockerImage),
+		Parameters: []*mesos.Parameter{
+			&mesos.Parameter{
+				Key: proto.String("entrypoint"),
+				Value: proto.String("/cexecutor"),
+			},
+		},
 	}
 	containerInfo := &mesos.ContainerInfo{
 		Type: mesos.ContainerInfo_DOCKER.Enum(),
 		Docker: dockerInfo,
+		Volumes: []*mesos.Volume{
+			&mesos.Volume{
+				Mode: mesos.Volume_RO.Enum(),
+				ContainerPath: proto.String("/executor"),
+				HostPath: proto.String("/usr/local/bin/executor"),
+			},
+		},
 	}
 	//Task should have at least one (but not both) of CommandInfo or ExecutorInfo present.
 	task := &mesos.TaskInfo{
 		Name:     proto.String(taskName),
 		TaskId:   taskId,
 		SlaveId:  sid,
-		//Executor: sched.executor,
-		Command: &mesos.CommandInfo{
+		Executor: &mesos.ExecutorInfo{
+			ExecutorId: &mesos.ExecutorID {
+				Value: proto.String(taskInfo.JobInfo.Name),
+			},
+			Command: &mesos.CommandInfo{
+				//According to mesos.pb.go, "If 'shell == true', the command will be launched via shell."
+				Shell: proto.Bool(true),
+				Value: proto.String(taskInfo.Command),
+				User: proto.String("root"),
+			},
+			Container: containerInfo,
+			
+		},
+		/*Command: &mesos.CommandInfo{
 			//According to mesos.pb.go, "If 'shell == true', the command will be launched via shell."
 			Shell: proto.Bool(true),
 			Value: proto.String(taskInfo.Command),
 			User: proto.String("root"),
 		},
-		Container: containerInfo,
+		Container: containerInfo,*/
 		Resources: []*mesos.Resource{
 			util.NewScalarResource("cpus", taskInfo.Cpus),
 			util.NewScalarResource("mem", taskInfo.Mem),
