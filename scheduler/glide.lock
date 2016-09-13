@@ -1,5 +1,5 @@
-hash: 8f3a189a88b8320bcd84c50399824b06ad1b6d75b20d4751fdbfe34f9169ce85
-updated: 2016-09-02T23:42:27.246947944+08:00
+hash: 46350fca4d4c939ae7d74959d8e7019900fb2963f5b8c4fb3febea7abe46a4d3
+updated: 2016-09-13T10:34:52.799984895+08:00
 imports:
 - name: github.com/cloudfoundry-incubator/candiedyaml
   version: 99c3df83b51532e3615f851d8c2dbb638f5313bf
@@ -13,14 +13,17 @@ imports:
   - etcdserver/etcdserverpb
   - mvcc/mvccpb
   - pkg/tlsutil
+- name: github.com/garyburd/redigo
+  version: 8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13
+  subpackages:
+  - redis
+  - internal
 - name: github.com/ghodss/yaml
   version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
 - name: github.com/gogo/protobuf
-  version: 966a6f4b3274f2692aa2f30df2ea5c7172c832ca
+  version: d7788ac7ca647999a3775cb756e449ab177dd138
   subpackages:
   - proto
-  - gogoproto
-  - protoc-gen-gogo/descriptor
 - name: github.com/golang/glog
   version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
 - name: github.com/golang/protobuf
@@ -28,6 +31,8 @@ imports:
   subpackages:
   - jsonpb
   - proto
+- name: github.com/gorilla/context
+  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
   version: 0a192a193177452756c362c20087ddafcf6829c4
 - name: github.com/grpc-ecosystem/grpc-gateway
@@ -63,7 +68,7 @@ imports:
 - name: github.com/yuzhichang/cron
   version: fe2bc9da317ca020e16708705d6c7ca5cd7241b0
 - name: github.com/yuzhichang/mesos-go
-  version: 838b3d7de8a09ea6aff1e701c969d4cdb71707bb
+  version: a44c4cdc2f6961ddcb4ca67bbb4b318516839cae
   subpackages:
   - mesosproto
   - mesosutil
@@ -89,4 +94,4 @@ imports:
   - transport
 - name: gopkg.in/yaml.v2
   version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
-devImports: []
+testImports: []

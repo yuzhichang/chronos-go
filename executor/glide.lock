@@ -1,0 +1,27 @@
+hash: a1926cac9661d12bc51e81fb591791b0828deff15ab440fa4bceb0d0ed8fff6f
+updated: 2016-09-13T09:43:02.275591081+08:00
+imports:
+- name: github.com/gogo/protobuf
+  version: a11c89fbb0ad4acfa8abc4a4d5f7e27c477169b1
+  subpackages:
+  - proto
+- name: github.com/golang/glog
+  version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+- name: github.com/mesos/mesos-go
+  version: 2b28dad0aa75289407717b98d82c7871543bb4db
+  subpackages:
+  - executor
+  - mesosproto
+  - mesosutil
+  - mesosutil/process
+  - messenger
+  - messenger/sessionid
+  - upid
+  - mesosproto/scheduler
+- name: github.com/pborman/uuid
+  version: b984ec7fa9ff9e428bd0cf0abf429384dfbe3e37
+- name: golang.org/x/net
+  version: 749a502dd1eaf3e5bfd4f8956748c502357c0bbe
+  subpackages:
+  - context
+testImports: []

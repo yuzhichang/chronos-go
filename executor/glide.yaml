@@ -1,0 +1,6 @@
+package: github.com/yuzhichang/chronos-go/executor
+import:
+- package: github.com/mesos/mesos-go
+  subpackages:
+  - executor
+  - mesosproto

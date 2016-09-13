@@ -47,12 +47,13 @@ zhichyu@meizu:~$ rm -fr proj
 zhichyu@meizu:~$ mkdir -p proj/src
 zhichyu@meizu:~$ cd proj/src/
 zhichyu@meizu:~/proj/src$ git clone git@github.com:yuzhichang/chronos-go.git
-zhichyu@meizu:~/proj/src$ cd chronos-go/
-zhichyu@meizu:~/proj/src/chronos-go$ glide install
-zhichyu@meizu:~/proj/src/chronos-go$ export GOPATH=$HOME/proj
-zhichyu@meizu:~/proj/src/chronos-go$ go build .
-zhichyu@meizu:~/proj/src/chronos-go$ docker-compose up -d
-zhichyu@meizu:~/proj/src/chronos-go$ ./chronos-go -logtostderr -run_sample
+zhichyu@meizu:~/proj/src$ cd chronos-go/compose
+zhichyu@meizu:~/proj/src/chronos-go/compose$ docker-compose up -d
+zhichyu@meizu:~/proj/src/chronos-go/compose$ cd ../scheduler
+zhichyu@meizu:~/proj/src/chronos-go/scheduler$ glide install
+zhichyu@meizu:~/proj/src/chronos-go/scheduler$ export GOPATH=$HOME/proj
+zhichyu@meizu:~/proj/src/chronos-go/scheduler$ go build .
+zhichyu@meizu:~/proj/src/chronos-go/scheduler$ ./scheduler -logtostderr -run_sample
 I0905 22:37:40.212753   17429 election.go:80] my proposal: 127.0.0.1:8080
 I0905 22:37:40.216029   17429 election.go:93] I'v been elected as leader: /chronos-go/election/506956fd23119aef 127.0.0.1:8080
 I0905 22:37:40.239820   17429 election.go:47] leader: /chronos-go/election/506956fd23119aef 127.0.0.1:8080
@@ -130,5 +131,5 @@ I0905 22:38:07.189434   17429 chronos.go:209] Status update: task ping3-14731258
 I0905 22:38:07.248017   17429 chronos.go:209] Status update: task ping3-1473125881258395012  is in state  TASK_FINISHED
 I0905 22:38:07.249382   17429 chronos.go:165] decline all 1 offers since there is no task in backlog
 I0905 22:38:07.555648   17429 main.go:212] exited
-zhichyu@meizu:~/proj/src/chronos-go$
+zhichyu@meizu:~/proj/src/chronos-go/scheduler$
 ```

@@ -17,3 +17,7 @@ import:
 - package: github.com/yuzhichang/cron
   version: del_entry
 - package: github.com/cloudfoundry-incubator/candiedyaml
+- package: github.com/garyburd/redigo
+  version: ^1.0.0
+  subpackages:
+  - redis
