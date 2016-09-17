@@ -82,7 +82,7 @@ func generateMesosTask(taskInfo TaskInfo, sid *mesos.SlaveID) *mesos.TaskInfo {
 		Parameters: []*mesos.Parameter{
 			&mesos.Parameter{
 				Key: proto.String("entrypoint"),
-				Value: proto.String("/cexecutor"),
+				Value: proto.String("/executor"),
 			},
 		},
 	}
@@ -108,13 +108,15 @@ func generateMesosTask(taskInfo TaskInfo, sid *mesos.SlaveID) *mesos.TaskInfo {
 			},
 			Command: &mesos.CommandInfo{
 				//According to mesos.pb.go, "If 'shell == true', the command will be launched via shell."
-				Shell: proto.Bool(true),
-				Value: proto.String(taskInfo.Command),
+				//the code is at github.com/apache/mesos/src/docker/docker.cpp:615.
+				Shell: proto.Bool(false),
+				Value: proto.String("-logtostderr"),
 				User: proto.String("root"),
 			},
 			Container: containerInfo,
 			
 		},
+		Data: []byte(taskInfo.Command),
 		/*Command: &mesos.CommandInfo{
 			//According to mesos.pb.go, "If 'shell == true', the command will be launched via shell."
 			Shell: proto.Bool(true),
